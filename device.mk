@@ -11,6 +11,10 @@ DEVICE_NAME := caymanlm
 # Inherit from the common device configuration.
 $(call inherit-product, device/lge/sm7250-common/sm7250-common.mk)
 
+# Overlays
+PRODUCT_PACKAGES += \
+    ApertureOverlayCaymanlm
+
 # Soong namespace
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
