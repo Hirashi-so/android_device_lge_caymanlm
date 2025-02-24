@@ -8,19 +8,34 @@ from extract_utils.main import (
     ExtractUtils,
     ExtractUtilsModule,
 )
+from extract_utils.fixups_blob import (
+    blob_fixup,
+    blob_fixups_user_type,
+)
+from extract_utils.fixups_lib import (
+    lib_fixups,
+)
 
 import extract_utils.tools
 
 namespace_imports = [
-    'device/lge/caymanlm',
     'vendor/lge/sm7250-common',
+    'vendor/qcom/opensource/display',
 ]
+
+
+blob_fixups: blob_fixups_user_type = {
+    'vendor/lib64/liblgdnnsnpe.so': blob_fixup()
+        .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
+}  # fmt: skip
+
 
 module = ExtractUtilsModule(
     'caymanlm',
     'lge',
+    blob_fixups=blob_fixups,
+    lib_fixups=lib_fixups,
     namespace_imports=namespace_imports,
-    add_firmware_proprietary_file=True,
 )
 
 if __name__ == '__main__':
