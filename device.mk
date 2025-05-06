@@ -32,6 +32,7 @@ $(call soong_config_set,LGE_FINGERPRINT_HAL,TARGET_HAS_EGISTEC_UDFPS,true)
 PRODUCT_PACKAGES += \
     ApertureOverlayCaymanlm \
     FrameworksResOverlayCaymanlm \
+    SettingsOverlayCaymanlm \
     SystemUIOverlayCaymanlm
 
 # Soong namespace
