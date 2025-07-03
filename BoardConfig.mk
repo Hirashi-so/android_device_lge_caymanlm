@@ -8,6 +8,7 @@
 include device/lge/sm7250-common/BoardConfigCommon.mk
 
 # Kernel
+BOARD_KERNEL_CMDLINE += androidboot.hardware=caymanlm
 TARGET_KERNEL_CONFIG := vendor/lineageos_cayman_defconfig
 
 # Properties
