@@ -11,5 +11,9 @@ DEVICE_NAME := caymanlm
 # Inherit from the common device configuration.
 $(call inherit-product, device/lge/sm7250-common/sm7250-common.mk)
 
+# Soong namespace
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
+
 # Inherit from vendor makefiles.
 $(call inherit-product, vendor/lge/caymanlm/caymanlm-vendor.mk)
