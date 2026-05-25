@@ -1,0 +1,29 @@
+<manifest version="1.0" type="device">
+    <!-- Boot Control HAL to standard AIDL format -->
+     <hal format="aidl">
+        <name>android.hardware.boot</name>
+        <version>1</version>
+        <fqname>IBootControl/default</fqname>
+    </hal>
+    <!-- Health HAL for battery reading in recovery -->
+    <hal format="hidl">
+        <name>android.hardware.health</name>
+        <transport>hwbinder</transport>
+        <version>2.1</version>
+        <interface>
+            <name>IHealth</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+
+    <!-- Fastboot HAL for fastbootd dynamic partition flashing -->
+    <hal format="hidl">
+        <name>android.hardware.fastboot</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IFastboot</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+</manifest>

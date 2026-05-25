@@ -12,13 +12,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 PRODUCT_SHIPPING_API_LEVEL := 29
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/yaap/config/common_full_phone.mk)
 
 # Inherit from device makefiles
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := lineage_caymanlm
+PRODUCT_NAME := yaap_caymanlm
 PRODUCT_DEVICE := caymanlm
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_BRAND := LGE

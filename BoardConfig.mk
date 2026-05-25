@@ -8,7 +8,11 @@
 include device/lge/sm7250-common/BoardConfigCommon.mk
 
 # Kernel
-BOARD_KERNEL_CMDLINE += androidboot.hardware=caymanlm
+BOARD_KERNEL_CMDLINE += androidboot.hardware=caymanlm \
+androidboot.selinux=permissive \
+panic=0 \
+androidboot.init_fatal_reboot_target=recovery \
+msm_watchdog_v2.disable=1
 TARGET_KERNEL_CONFIG := vendor/lineageos_cayman_defconfig
 
 # Properties
@@ -17,3 +21,89 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
 # Inherit vendor BoardConfig
 include vendor/lge/caymanlm/BoardConfigVendor.mk
+
+
+# Cherry-picked from legacy avicii/caymanlm tree
+# Display Density
+TARGET_SCREEN_DENSITY := 440
+TARGET_RECOVERY_UI_MARGIN_HEIGHT := 100
+TARGET_RECOVERY_UI_MARGIN_WIDTH := 10
+
+# Partitions & Dynamic Partitions
+BOARD_BUILD_SYSTEM_IMAGE := true
+BOARD_USE_DYNAMIC_PARTITIONS := true
+BOARD_BUILD_SUPER_IMAGE_BY_DEFAULT := true
+BOARD_USES_METADATA_PARTITION := true
+
+BOARD_BOOTIMAGE_PARTITION_SIZE := 100663296
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 100663296
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 236009631744
+
+BOARD_SUPER_PARTITION_SIZE := 21474836480
+BOARD_SUPER_PARTITION_GROUPS := lge_dynamic_partitions
+BOARD_LGE_DYNAMIC_PARTITIONS_SIZE := 10733223936
+BOARD_LGE_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext vendor
+
+BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+
+TARGET_COPY_OUT_ODM := odm
+TARGET_COPY_OUT_PRODUCT := product
+TARGET_COPY_OUT_SYSTEM_EXT := system_ext
+TARGET_COPY_OUT_VENDOR := vendor
+
+BOARD_FLASH_BLOCK_SIZE := 262144
+TARGET_USERIMAGES_USE_EROFS := false
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+
+# A/B & OTA Updates
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS += \
+    boot \
+    odm \
+    product \
+    recovery \
+    system \
+    system_ext \
+    vbmeta \
+    vbmeta_system \
+    vendor
+
+# Verified Boot (AVB)
+BOARD_AVB_ENABLE := true
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 2
+BOARD_AVB_VBMETA_SYSTEM := system system_ext product
+BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 1
+
+# Boot Image & DTB/DTBO Configuration
+#Boot Header v2 (Standard for Kernel 4.19 / SM7250)
+BOARD_BOOTIMG_HEADER_VERSION := 2
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
+
+# Boot Image Memory Offsets (SM7250 / Lito)
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_KERNEL_TAGS_OFFSET := 0x01e00000
+BOARD_RAMDISK_OFFSET     := 0x01000000
+BOARD_KERNEL_OFFSET      := 0x00008000
+BOARD_DTB_OFFSET         := 0x01f00000
+
+BOARD_MKBOOTIMG_ARGS += --base $(BOARD_KERNEL_BASE)
+BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
+BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
+
+# Use Header v2 and include DTB inside boot.img
+BOARD_BOOTIMG_HEADER_VERSION := 2
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true

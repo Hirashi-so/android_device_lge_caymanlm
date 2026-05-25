@@ -5,4 +5,5 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_caymanlm.mk
+    $(LOCAL_DIR)/yaap_caymanlm.mk
+COMMON_LUNCH_CHOICES := yaap_caymanlm-userdebug
