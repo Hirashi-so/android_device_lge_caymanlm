@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device name="Android">
+    <!-- Override the default framework battery capacity for LG Velvet -->
+    <item name="battery.capacity">4300</item>
+</device>
+

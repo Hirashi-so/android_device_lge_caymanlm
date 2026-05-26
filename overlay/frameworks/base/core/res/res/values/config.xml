@@ -42,4 +42,7 @@
 
     <!-- Type of the udfps long press sensor. Empty if long press is not supported. -->
     <string name="config_dozeUdfpsLongPressSensorType" translatable="false">org.lineageos.sensor.udfps</string>
+
+    <!-- Path to the local high brightness mode node for UDFPS -->
+    <string name="config_hbm_path" translatable="false">/sys/devices/virtual/panel/panel-0/brightness/fp_lhbm</string>
 </resources>

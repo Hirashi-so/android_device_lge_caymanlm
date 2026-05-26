@@ -22,11 +22,11 @@ PRODUCT_NAME := yaap_caymanlm
 PRODUCT_DEVICE := caymanlm
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_BRAND := LGE
-PRODUCT_MODEL := VELVET
+PRODUCT_MODEL := LM-G900N
 
 PRODUCT_GMS_CLIENTID_BASE := android-lge
 
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    DeviceProduct=caymanlm \
-    BuildDesc="caymanlm-user 13 TKQ1.220829.002 231811419f557 release-keys" \
-    BuildFingerprint="lge/caymanlm/caymanlm:13/TKQ1.220829.002/231811419f557:user/release-keys"
+#PRODUCT_BUILD_PROP_OVERRIDES += \
+#    DeviceProduct=caymanlm \
+#    BuildDesc="caymanlm-user 13 TKQ1.220829.002 231811419f557 release-keys" \
+#    BuildFingerprint="lge/caymanlm/caymanlm:13/TKQ1.220829.002/231811419f557:user/release-keys"

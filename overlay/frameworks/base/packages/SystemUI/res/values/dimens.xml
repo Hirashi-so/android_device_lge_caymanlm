@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Push the entire QS header/clock down from the top edge curve -->
+    <dimen name="quick_qs_offset_height">80dp</dimen>
+    <dimen name="quick_settings_header_height">120dp</dimen>
+
+    <!-- Push the QS clock/header further inward from the curved side edge (Tuned to 32dp) -->
+    <dimen name="qs_header_padding_start">32dp</dimen>
+    <dimen name="qs_header_padding_end">32dp</dimen>
+    <dimen name="quick_settings_header_padding_start">32dp</dimen>
+    <dimen name="quick_settings_header_padding_end">32dp</dimen>
+</resources>
+

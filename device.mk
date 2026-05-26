@@ -27,6 +27,15 @@ PRODUCT_COPY_FILES += \
 
 $(call soong_config_set,LGE_FINGERPRINT_HAL,TARGET_HAS_EGISTEC_UDFPS,true)
 
+# Include custom open-source dummy libfpsph to unblock fingerprint HAL
+PRODUCT_PACKAGES += \
+    libfpsph
+
+# Add Fingerprint Algorithm Libraries to Product Packages
+PRODUCT_PACKAGES += \
+    libswregistrationalgo \
+    com.qti.node.swregistration
+
 # Overlays
 PRODUCT_PACKAGES += \
     ApertureOverlayCaymanlm \
@@ -45,7 +54,6 @@ $(call inherit-product, vendor/lge/caymanlm/caymanlm-vendor.mk)
 PRODUCT_PACKAGES += \
     servicemanager.recovery
 
-# Cherry-picked from legacy avicii/caymanlm tree
 # Boot animation resolution
 TARGET_SCREEN_HEIGHT := 2460
 TARGET_SCREEN_WIDTH := 1080
