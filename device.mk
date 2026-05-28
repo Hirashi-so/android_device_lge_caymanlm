@@ -58,6 +58,10 @@ PRODUCT_PACKAGES += \
 TARGET_SCREEN_HEIGHT := 2460
 TARGET_SCREEN_WIDTH := 1080
 
+# Set LCD density to 414 to achieve exactly 417dp smallest width
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.sf.lcd_density=414
+
 # Partitions configuration
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_VIRTUAL_AB_COMPRESSION := false

@@ -15,7 +15,22 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Microns/ums (1000 um = 1mm) per pixel for the given device. If unspecified, UI that
-         relies on this value will not be sized correctly. -->
+    <!-- Microns/ums (1000 um = 1mm) per pixel for the given device. -->
     <item name="pixel_pitch" format="float" type="dimen">64.29</item>
+
+    <!-- Enable framework dimming to mask the screen when kernel boosts global brightness for UDFPS -->
+    <bool name="config_udfpsFrameworkDimming">true</bool>
+
+    <!-- Correct gradient mapping for UDFPS dim layer -->
+    <!-- Format is "brightness,alpha" -->
+    <!-- Applies maximum opacity (255) at lowest brightness (0) to mask the global HBM blinding -->
+    <string-array name="config_udfpsDimmingBrightnessAlphaArray" translatable="false">
+        <item>0,255</item>
+        <item>512,215</item>
+        <item>1024,192</item>
+        <item>2048,128</item>
+        <item>3072,64</item>
+        <item>4095,0</item>
+        <item>8190,0</item>
+    </string-array>
 </resources>

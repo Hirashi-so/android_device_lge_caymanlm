@@ -17,6 +17,10 @@
 */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- UDFPS: Tell the framework to ignore display votes (Prevents SurfaceFlinger from boosting global backlight and causing flashbangs) -->
+    <bool name="config_ignoreUdfpsVote">true</bool>	
+
     <!-- Whether device has a notch -->
     <bool name="config_haveNotch">true</bool>
 
@@ -39,10 +43,28 @@
         <item>2187</item>
         <item>91</item>
     </integer-array>
+    
+    <!-- Minimum screen brightness setting represented as a float (0.0 to 1.0) -->
+    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.0</item>
+    <!-- Maximum screen brightness setting represented as a float (0.0 to 1.0) -->
+    <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">1.0</item>
 
     <!-- Type of the udfps long press sensor. Empty if long press is not supported. -->
     <string name="config_dozeUdfpsLongPressSensorType" translatable="false">org.lineageos.sensor.udfps</string>
 
     <!-- Path to the local high brightness mode node for UDFPS -->
     <string name="config_hbm_path" translatable="false">/sys/devices/virtual/panel/panel-0/brightness/fp_lhbm</string>
+
+    <!-- Force framework to use modem's received LTE RSRP for signal strength -->
+    <bool name="config_use_modem_rcvd_lte_rsrp">true</bool>
+
+    <!-- Thresholds for LTE dBm in signal strength to fix 0 dBm UI bug -->
+    <integer-array translatable="false" name="config_lteDbmThresholds">
+        <item>-140</item>    <!-- SIGNAL_STRENGTH_NONE_OR_UNKNOWN -->
+        <item>-128</item>    <!-- SIGNAL_STRENGTH_POOR -->
+        <item>-118</item>    <!-- SIGNAL_STRENGTH_MODERATE -->
+        <item>-108</item>    <!-- SIGNAL_STRENGTH_GOOD -->
+        <item>-98</item>     <!-- SIGNAL_STRENGTH_GREAT -->
+        <item>-44</item>
+    </integer-array>
 </resources>
