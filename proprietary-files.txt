@@ -515,9 +515,6 @@ vendor/firmware/egista.b07
 
 # Egis Fingerprint Registration Algorithms
 vendor/lib64/libswregistrationalgo.so
-vendor/lib/libswregistrationalgo.so
-vendor/lib64/camera/components/com.qti.node.swregistration.so
-vendor/lib/camera/components/com.qti.node.swregistration.so
 
 # IPA firmware
 vendor/etc/init/ipa_fws.rc
