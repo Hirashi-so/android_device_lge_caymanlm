@@ -107,3 +107,11 @@ BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 BOARD_BOOTIMG_HEADER_VERSION := 2
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+
+# Soong will Compile hardware/lge
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/lge
+
+# Register Lineage LiveDisplay framework compatibility matrix to pass VINTF check
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+    device/lge/caymanlm/livedisplay_fw_matrix.xml

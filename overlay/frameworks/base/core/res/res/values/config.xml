@@ -16,45 +16,121 @@
 ** limitations under the License.
 */
 -->
+
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- UDFPS: Tell the framework to ignore display votes (Prevents SurfaceFlinger from boosting global backlight and causing flashbangs) -->
-    <bool name="config_ignoreUdfpsVote">true</bool>	
+
+
+    <!--    DISPLAY & BRIGHTNESS    -->
 
     <!-- Whether device has a notch -->
     <bool name="config_haveNotch">true</bool>
 
-    <!-- List of biometric sensors on the device, in decreasing strength. Consumed by AuthService
-         when registering authenticators with BiometricService. Format must be ID:Modality:Strength,
-         where: IDs are unique per device, Modality as defined in BiometricAuthenticator.java,
-         and Strength as defined in Authenticators.java -->
+    <!-- Minimum screen brightness setting represented as a float (0.0 to 1.0) -->
+    <!-- Set to 0.117 (approx 30/255) to chop off the dead zone completely -->
+    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.117</item>
+    
+    <!-- Maximum screen brightness setting represented as a float (0.0 to 1.0) -->
+    <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">1.0</item>
+
+    <!-- An array describing the screen's backlight values (0-255) -->
+    <integer-array name="config_screenBrightnessBacklight">
+        <item>30</item>
+        <item>45</item>
+        <item>65</item>
+        <item>90</item>
+        <item>115</item>
+        <item>145</item>
+        <item>180</item>
+        <item>215</item>
+        <item>255</item>
+    </integer-array>
+
+    <!-- An array of floats describing the screen brightness in nits.
+         Mapped EXACTLY 1:1 with Backlight to bypass framework spline distortion and fix 0-30% deadzone -->
+    <array name="config_screenBrightnessNits">
+        <item>30.0</item>
+        <item>45.0</item>
+        <item>65.0</item>
+        <item>90.0</item>
+        <item>115.0</item>
+        <item>145.0</item>
+        <item>180.0</item>
+        <item>215.0</item>
+        <item>255.0</item>
+    </array>
+
+ 
+ 
+ 
+    <!--   LIVEDISPLAY & COLOR SETTINGS    -->
+  
+    <!-- Enable LiveDisplay and Color Modes -->
+    <bool name="config_enableLiveDisplay">true</bool>
+    <bool name="config_setColorTransformSupported">true</bool>
+    <bool name="config_hasColorModes">true</bool>
+
+    <!-- Supported color modes -->
+    <integer-array name="config_availableColorModes">
+        <item>0</item> <!-- Natural -->
+        <item>1</item> <!-- Boosted -->
+        <item>2</item> <!-- Saturated -->
+        <item>3</item> <!-- Automatic -->
+    </integer-array>
+
+
+
+    <!--    BIOMETRICS & UDFPS (FINGERPRINT)     -->
+    
+    <!-- List of biometric sensors on the device. Format: ID:Modality:Strength -->
     <string-array name="config_biometric_sensors" translatable="false" >
         <item>0:2:15</item> <!-- ID0:Fingerprint:Strong -->
     </string-array>
 
-    <!-- The properties of a UDFPS sensor in pixels, in the order listed below: -->
+    <!-- The properties of a UDFPS sensor in pixels (Location X, Location Y, Radius) -->
     <integer-array name="config_udfps_sensor_props" translatable="false" >
-      <!--
-        <item>sensorLocationX</item>
-        <item>sensorLocationY</item>
-        <item>sensorRadius</item>
-      -->
         <item>540</item>
         <item>2187</item>
         <item>91</item>
     </integer-array>
-    
-    <!-- Minimum screen brightness setting represented as a float (0.0 to 1.0) -->
-    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.0</item>
-    <!-- Maximum screen brightness setting represented as a float (0.0 to 1.0) -->
-    <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">1.0</item>
 
-    <!-- Type of the udfps long press sensor. Empty if long press is not supported. -->
-    <string name="config_dozeUdfpsLongPressSensorType" translatable="false">org.lineageos.sensor.udfps</string>
+    <!-- Enable software-based dimming layer for optical fingerprint sensor -->
+    <!-- This masks the screen with black and draws a bright white circle over the sensor -->
+    <bool name="config_udfpsFrameworkDimming">false</bool>
 
-    <!-- Path to the local high brightness mode node for UDFPS -->
+    <!-- UDFPS: Tell the framework to ignore display votes (Prevents global backlight flashbangs) -->
+    <bool name="config_ignoreUdfpsVote">false</bool>	
+
+    <!-- Path to the local high brightness mode node for UDFPS (FOD illumination) -->
     <string name="config_hbm_path" translatable="false">/sys/devices/virtual/panel/panel-0/brightness/fp_lhbm</string>
 
+    
+
+    <!--    DOZE / AOD (ALWAYS-ON DISPLAY)    -->
+    
+    <!-- Enable Always-On Display -->
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+    <bool name="config_dozeAlwaysOnEnabled">true</bool>
+
+    <!-- Enable both Double Tap and Single Tap to Wake -->
+    <bool name="config_supportDoubleTapWake">true</bool>
+    <bool name="config_supportSingleTapWake">true</bool>
+    <string name="config_dozeDoubleTapSensorType" translatable="false">org.lineageos.sensor.double_tap</string>
+
+    <!-- Tell Doze service to listen to the UDFPS hardware sensor for single taps -->
+    <string name="config_dozeTapSensorType" translatable="false">org.lineageos.sensor.udfps</string>
+    <string name="config_dozeUdfpsLongPressSensorType" translatable="false">org.lineageos.sensor.udfps</string>
+    
+    <!-- Enable screen-off fingerprint unlock -->
+    <bool name="config_supportsScreenOffUdfps">true</bool>
+
+    <!-- True if the display hardware needs to blank (turn off) when transitioning from doze to normal -->
+    <!-- Force to false to prevent ScrimState blanking and enable proper shade blur transition -->
+    <bool name="config_displayBlanksAfterDoze">false</bool>
+
+
+    <!--    TELEPHONY & MODEM      -->
+    
     <!-- Force framework to use modem's received LTE RSRP for signal strength -->
     <bool name="config_use_modem_rcvd_lte_rsrp">true</bool>
 
@@ -67,4 +143,5 @@
         <item>-98</item>     <!-- SIGNAL_STRENGTH_GREAT -->
         <item>-44</item>
     </integer-array>
+
 </resources>

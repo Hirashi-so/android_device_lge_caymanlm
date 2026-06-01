@@ -58,7 +58,7 @@ PRODUCT_PACKAGES += \
 TARGET_SCREEN_HEIGHT := 2460
 TARGET_SCREEN_WIDTH := 1080
 
-# Set LCD density to 414 to achieve exactly 417dp smallest width
+# Set Display density to 414 to achieve exactly 417dp smallest width
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.sf.lcd_density=414
 
@@ -129,3 +129,7 @@ WITH_GAPPS := true
 WITH_GMS := true
 TARGET_INCLUDE_GAPPS := true
 $(call inherit-product-if-exists, vendor/google/gms/config.mk)
+
+# Ensure LiveDisplay service is forcefully included in the build
+PRODUCT_PACKAGES += \
+    vendor.lineage.livedisplay-service.lge

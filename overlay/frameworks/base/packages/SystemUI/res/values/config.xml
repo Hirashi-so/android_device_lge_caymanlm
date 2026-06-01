@@ -33,4 +33,9 @@
         <item>4095,0</item>
         <item>8190,0</item>
     </string-array>
+
+    <!-- Allow Double Tap to Wake pulsing in Doze/AOD -->
+    <bool name="doze_pulse_on_double_tap">true</bool>
+    <bool name="doze_display_state_supported">true</bool>
+
 </resources>

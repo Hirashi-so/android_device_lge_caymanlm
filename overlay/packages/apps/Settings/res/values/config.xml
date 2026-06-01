@@ -17,4 +17,20 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- The radius of the enrollment progress bar, in dp -->
     <integer name="config_udfpsEnrollProgressBar" translatable="false">105</integer>
+
+    <!-- Whether the device supports LiveDisplay color temperature adjustment -->
+    <bool name="config_enableLiveDisplay">true</bool>
+
+    <!-- Whether the device has color modes available for the user to select (Hardware/HAL support) -->
+    <bool name="config_setColorTransformSupported">true</bool>
+    <bool name="config_hasColorModes">true</bool>
+    
+    <!-- Define the supported color modes (Optional but recommended to force UI appearance) -->
+    <integer-array name="config_availableColorModes">
+        <item>0</item> <!-- COLOR_MODE_NATURAL -->
+        <item>1</item> <!-- COLOR_MODE_BOOSTED -->
+        <item>2</item> <!-- COLOR_MODE_SATURATED -->
+        <item>3</item> <!-- COLOR_MODE_AUTOMATIC -->
+    </integer-array>
+
 </resources>
