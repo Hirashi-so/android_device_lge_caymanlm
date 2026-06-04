@@ -1,0 +1,19 @@
+// Module for Android AudioFlinger (Root vendor/etc/)
+prebuilt_etc {
+    name: "audio_effects_caymanlm_root",
+    src: "audio_effects.xml",
+    filename: "audio_effects.xml",
+    vendor: true,
+    overrides: ["audio_effects.xml"],
+}
+
+// Module for Qualcomm HAL and Dolby DMS (vendor/etc/audio/)
+prebuilt_etc {
+    name: "audio_effects_caymanlm_qcom",
+    src: "audio_effects.xml",
+    filename: "audio_effects.xml",
+    sub_dir: "audio",
+    vendor: true,
+    // Override common QCOM module names to prevent duplicate copy errors
+    overrides: ["audio_effects_qcom", "audio_effects_vendor"],
+}

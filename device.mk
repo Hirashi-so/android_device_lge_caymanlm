@@ -136,3 +136,8 @@ PRODUCT_PACKAGES += \
 
 # Inherit Sony Dolby Atmos hardware configurations and vendor blobs
 $(call inherit-product-if-exists, hardware/dolby/dolby.mk)
+
+# Include dual-path audio effects for AudioFlinger and Dolby DMS synchronization
+PRODUCT_PACKAGES += \
+    audio_effects_caymanlm_root \
+    audio_effects_caymanlm_qcom
