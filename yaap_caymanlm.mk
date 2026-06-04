@@ -8,6 +8,9 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
+# Configure GApps build variables
+TARGET_BUILD_GAPPS := true
+
 # Indicate the first API level the device has been commercially launched on
 PRODUCT_SHIPPING_API_LEVEL := 29
 
@@ -21,7 +24,7 @@ $(call inherit-product, $(LOCAL_PATH)/device.mk)
 PRODUCT_NAME := yaap_caymanlm
 PRODUCT_DEVICE := caymanlm
 PRODUCT_MANUFACTURER := LGE
-PRODUCT_BRAND := LGE
+PRODUCT_BRAND := Lge
 PRODUCT_MODEL := LM-G900N
 
 PRODUCT_GMS_CLIENTID_BASE := android-lge

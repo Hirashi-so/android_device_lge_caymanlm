@@ -124,12 +124,6 @@ PRODUCT_COPY_FILES += \
     device/lge/caymanlm/configs/display/qdcm_calib_data_SW43103_cmd_mode_dsc_dsi_panel.xml:$(TARGET_COPY_OUT_VENDOR)/etc/qdcm_calib_data_SW43103_cmd_mode_dsc_dsi_panel.xml \
     device/lge/caymanlm/configs/display/advanced_sf_offsets.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display/advanced_sf_offsets.xml
 
-# Force include Google Mobile Services (GApps)
-WITH_GAPPS := true
-WITH_GMS := true
-TARGET_INCLUDE_GAPPS := true
-$(call inherit-product-if-exists, vendor/google/gms/config.mk)
-
 # Ensure LiveDisplay service is forcefully included in the build
 PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay-service.lge
