@@ -133,3 +133,6 @@ $(call inherit-product-if-exists, vendor/google/gms/config.mk)
 # Ensure LiveDisplay service is forcefully included in the build
 PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay-service.lge
+
+# Inherit Sony Dolby Atmos hardware configurations and vendor blobs
+$(call inherit-product-if-exists, hardware/dolby/dolby.mk)

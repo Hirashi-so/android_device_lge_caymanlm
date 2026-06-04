@@ -144,4 +144,8 @@
         <item>-44</item>
     </integer-array>
 
+
+    <!-- Enable the Linux /dev/input/event subsystem to monitor headphone jack changes -->
+    <bool name="config_useDevInputEventForAudioJack">true</bool>
+
 </resources>
