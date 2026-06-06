@@ -135,3 +135,7 @@ $(call inherit-product-if-exists, hardware/dolby/dolby.mk)
 PRODUCT_PACKAGES += \
     audio_effects_caymanlm_root \
     audio_effects_caymanlm_qcom
+
+# Opt-in to framework workaround / Disable display blanking on AOD unlock for UDFPS
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.systemui.udfps_disable_blanking=true
