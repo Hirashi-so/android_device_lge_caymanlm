@@ -24,7 +24,7 @@ $(call inherit-product, $(LOCAL_PATH)/device.mk)
 PRODUCT_NAME := yaap_caymanlm
 PRODUCT_DEVICE := caymanlm
 PRODUCT_MANUFACTURER := LGE
-PRODUCT_BRAND := Lge
+PRODUCT_BRAND := lge
 PRODUCT_MODEL := LM-G900N
 
 PRODUCT_GMS_CLIENTID_BASE := android-lge
