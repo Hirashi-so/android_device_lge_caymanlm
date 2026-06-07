@@ -1,0 +1,13 @@
+// Prebuilt module for Google Camera (GCam)
+android_app_import {
+    name: "GCam",
+    owner: "google",
+    apk: "GCam.apk",
+    // Sign with platform keys to let Soong automatically uncompress and align JNI libs
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+    product_specific: true,
+    overrides: ["Aperture", "Camera2", "Snap"],
+}
