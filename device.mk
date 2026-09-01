@@ -50,10 +50,6 @@ PRODUCT_SOONG_NAMESPACES += \
 # Inherit from vendor makefiles
 $(call inherit-product, vendor/lge/caymanlm/caymanlm-vendor.mk)
 
-# Add ServiceManager for recovery AIDL HALs
-PRODUCT_PACKAGES += \
-    servicemanager.recovery
-
 # Boot animation resolution
 TARGET_SCREEN_HEIGHT := 2460
 TARGET_SCREEN_WIDTH := 1080

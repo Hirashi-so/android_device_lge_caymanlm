@@ -11,7 +11,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Configure GApps build variables
 TARGET_BUILD_GAPPS := true
 
-# Indicate the first API level the device has been commercially launched on
+# Define the original shipping API level for caymanlm to align FCM target constraints
 PRODUCT_SHIPPING_API_LEVEL := 29
 
 # Inherit some common Lineage stuff.
@@ -20,7 +20,7 @@ $(call inherit-product, vendor/yaap/config/common_full_phone.mk)
 # Inherit from device makefiles
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
-# Device identifier. This must come after all inclusions.
+
 PRODUCT_NAME := yaap_caymanlm
 PRODUCT_DEVICE := caymanlm
 PRODUCT_MANUFACTURER := LGE
@@ -28,6 +28,12 @@ PRODUCT_BRAND := lge
 PRODUCT_MODEL := LM-G900N
 
 PRODUCT_GMS_CLIENTID_BASE := android-lge
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    DeviceName=LM-G900N \
+    DeviceProduct=caymanlm \
+    SystemDevice=caymanlm \
+    SystemName=LM-G900N
 
 #PRODUCT_BUILD_PROP_OVERRIDES += \
 #    DeviceProduct=caymanlm \
