@@ -1,0 +1,15 @@
+android_app {
+    name: "GCamProvisioner",
+    srcs: ["src/**/*.java"],
+    manifest: "AndroidManifest.xml",
+    sdk_version: "current",
+    min_sdk_version: "33",
+    privileged: true,
+    product_specific: true,
+    // This grants only the privileged install permission; platform signing isn't required.
+    privapp_allowlist: "privapp-permissions-com.hirashi.gcam.provisioner.xml",
+    overrides: ["Aperture", "Camera2", "Snap"],
+    optimize: {
+        enabled: false,
+    },
+}

@@ -138,4 +138,5 @@ PRODUCT_SYSTEM_PROPERTIES += \
 
 # Include GCam by 
 PRODUCT_PACKAGES += \
-    GCam
+    GCamPayload \
+    GCamProvisioner
