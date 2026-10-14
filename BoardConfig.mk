@@ -13,7 +13,7 @@ androidboot.selinux=permissive \
 panic=0 \
 androidboot.init_fatal_reboot_target=recovery \
 msm_watchdog_v2.disable=1
-TARGET_KERNEL_CONFIG := vendor/lineageos_cayman_defconfig
+TARGET_KERNEL_CONFIG := vendor/lineageos_caymanlm_defconfig
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
